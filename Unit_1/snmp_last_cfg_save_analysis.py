@@ -26,17 +26,17 @@ for curr_oid in OID_LIST:
 sysUptime, ccmHistoryRunningLastChanged, ccmHistoryRunningLastSaved, ccmHistoryStartupLastChanged = oid_value_list
 
 print("System has been up for {} seconds".format(convert_to_secs(sysUptime)))
-print("Seconds since last running config change: {}".format(convert_to_secs(ccmHistoryRunningLastChanged)))
-print("Seconds since last running config save: {}".format(convert_to_secs(ccmHistoryRunningLastSaved)))
-print("Seconds since last startup config change: {}".format(convert_to_secs(ccmHistoryStartupLastChanged)))
+print("Last running config change was at {} seconds since boot.".format(convert_to_secs(ccmHistoryRunningLastChanged)))
+print("Last running config save was at {} seconds since boot.".format(convert_to_secs(ccmHistoryRunningLastSaved)))
+print("Last startup config change was at {} seconds since boot.".format(convert_to_secs(ccmHistoryStartupLastChanged)))
 
 if ccmHistoryStartupLastChanged > 0:
     tics_since_last_change = (sysUptime - ccmHistoryRunningLastChanged)
     tics_since_last_save = (sysUptime - ccmHistoryStartupLastChanged)
-    if tics_since_last_save < tics_since_last_change:
+    if tics_since_last_save > tics_since_last_change:
         print(
         "Last running config change {} seconds after last save;\nPlease issue the 'copy run start' command!".format(
-            convert_to_secs(tics_since_last_change - tics_since_last_save))
+            convert_to_secs(tics_since_last_save - tics_since_last_change))
         )
     else:
         print("Startup config in sync with Running config.")
