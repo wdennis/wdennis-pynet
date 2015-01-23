@@ -6,7 +6,8 @@ __email__ = 'wdennis@nec-labs.com'
 from snmp_helper import snmp_get_oid, snmp_extract
 
 
-ROUTER_LIST = [('50.242.94.227', 'galileo', 7961), ('50.242.94.227', 'galileo', 8061)]
+ROUTER_LIST = [('50.242.94.227', 'galileo', 7961),
+               ('50.242.94.227', 'galileo', 8061)]
 
 OID_LIST = ['1.3.6.1.2.1.1.5.0', '1.3.6.1.2.1.1.1.0']
 
