@@ -1,0 +1,39 @@
+! *** Base template for new access-layer switches ***
+!
+service timestamps debug datetime msec localtime show-timezone
+service timestamps log datetime msec localtime show-timezone
+!
+hostname {{item.hostname}}
+!
+logging buffered 32000
+no logging console
+enable secret 0 {{item.secret}}
+!
+interface FastEthernet0/1
+switchport access vlan {{item.access_vlan}}
+switchport mode access
+spanning-tree portfast
+spanning-tree bpduguard enable
+exit
+!
+interface FastEthernet0/24
+switchport access vlan {{item.access_vlan}}
+switchport mode access
+spanning-tree portfast
+spanning-tree bpduguard enable
+exit
+!
+interface Vlan1
+ip address {{item.ip_addr}} 255.255.255.0
+no ip route-cache
+exit
+!
+ip default-gateway {{item.default_gateway}}
+snmp-server community {{item.snmp_community}} RO
+!
+line vty 0 15
+login
+end
+!
+! FINIS
+!

@@ -1,0 +1,13 @@
+---
+switches: 
+  - {hostname: pynet-sw1, secret: B1g53cr37, ip_addr: 192.168.10.20, 
+        default_gateway: 192.168.10.1, access_vlan: 10, snmp_community: ROcomm}
+  - {hostname: pynet-sw2, secret: B1g53cr37, ip_addr: 192.168.20.20, 
+        default_gateway: 192.168.20.1, access_vlan: 20, snmp_community: ROcomm}
+  - {hostname: pynet-sw3, secret: B1g53cr37, ip_addr: 192.168.30.20, 
+        default_gateway: 192.168.30.1, access_vlan: 30, snmp_community: ROcomm}
+  - {hostname: pynet-sw4, secret: B1g53cr37, ip_addr: 192.168.40.20, 
+        default_gateway: 192.168.40.1, access_vlan: 40, snmp_community: ROcomm}
+  - {hostname: pynet-sw5, secret: B1g53cr37, ip_addr: 192.168.50.20, 
+        default_gateway: 192.168.50.1, access_vlan: 50, snmp_community: ROcomm}
+

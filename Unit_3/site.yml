@@ -1,0 +1,5 @@
+- name: Generate access switch configuration file script
+  hosts: local
+
+  roles:
+    - access_switch
