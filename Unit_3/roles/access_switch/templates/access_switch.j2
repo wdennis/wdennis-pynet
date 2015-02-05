@@ -30,7 +30,7 @@ exit
 !
 ip default-gateway {{item.default_gateway}}
 !
-{% if item.snmpv3_enabled %}
+{% if item.snmpv3_enabled is defined %}
 access-list 98 remark *** SNMP ***
 access-list 98 permit any
 !
