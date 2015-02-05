@@ -9,19 +9,15 @@ logging buffered 32000
 no logging console
 enable secret 0 {{item.secret}}
 !
-interface FastEthernet0/1
+{% for num in range(24) %}
+interface FastEthernet0/{{loop.index}}
 switchport access vlan {{item.access_vlan}}
 switchport mode access
 spanning-tree portfast
 spanning-tree bpduguard enable
 exit
 !
-interface FastEthernet0/24
-switchport access vlan {{item.access_vlan}}
-switchport mode access
-spanning-tree portfast
-spanning-tree bpduguard enable
-exit
+{% endfor %}
 !
 interface Vlan1
 ip address {{item.ip_addr}} 255.255.255.0
