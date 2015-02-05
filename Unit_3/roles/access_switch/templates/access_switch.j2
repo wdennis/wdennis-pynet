@@ -29,8 +29,19 @@ no ip route-cache
 exit
 !
 ip default-gateway {{item.default_gateway}}
+!
+{% if item.snmpv3_enabled %}
+access-list 98 remark *** SNMP ***
+access-list 98 permit any
+!
+snmp-server view VIEWSTD iso included
+snmp-server group READONLY v3 priv read VIEWSTD access 98
+snmp-server user pysnmp READONLY v3 auth sha auth_key priv aes 128 encrypt_key
+!
+{% else %}
 snmp-server community {{item.snmp_community}} RO
 !
+{% endif %}
 line vty 0 15
 login
 end
